@@ -3,24 +3,16 @@
 // type Rank = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 
 
-// interface singleCard {
+// interface SingleCard {
 //     suit: Suit;
 //     rank: Rank
 //     assetURL: String
 // }
 
+import { SingleCard, Suit } from "../types"
 
 
-enum Suit {
-    b, c, d, s
-}
-
-interface singleCard {
-    suit: Suit;
-    rank: Number
-}
-
-class Card implements singleCard {
+export class Card implements SingleCard {
     public readonly suit: Suit;
     public readonly rank: number;
 
@@ -58,3 +50,5 @@ export class Deck {
         return this.deck.shift() as Card
     }
 }
+
+
