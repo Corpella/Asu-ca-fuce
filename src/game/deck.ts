@@ -1,45 +1,30 @@
-// type Suit = "b" | "c" | "d" | "s"
-
-// type Rank = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-
-
-// interface SingleCard {
-//     suit: Suit;
-//     rank: Rank
-//     assetURL: String
-// }
-
-import { SingleCard, Suit } from "../types"
+import { SingleCard, Suit, Rank, SuitEnum, DeckType } from "../types"
 
 
 export class Card implements SingleCard {
     public readonly suit: Suit;
-    public readonly rank: number;
+    public readonly rank: Rank;
 
-    constructor(suit: Suit, rank: number) {
+    constructor(suit: Suit, rank: Rank) {
         this.suit = suit
         this.rank = rank
     }
 
-    public get suitName(): string {
-        return Suit[this.suit];
-    }
-
     public get fullCard(): string {
-        return `${this.suitName}${this.rank}`
+        return `${this.suit}${this.rank}`
     }
     public get cardImage(): string {
-        return `assets/cards/${this.suit}${this.rank}`
+        return `/cards/${this.fullCard}.png`
     }
 }
 
-export class Deck {
-    private deck: Card[]
+export class Deck implements DeckType {
+    public deck: Card[]
     constructor() {
         this.deck = []
         for (let s = 0; s < 4; s++) {
-            for (let r = 1; r < 11; r++) {
-                this.deck.push(new Card(s, r))
+            for (let r: Rank = 1; r < 11; r++) {
+                this.deck.push(new Card(SuitEnum[s] as Suit, r as Rank))
             }
         }
     }

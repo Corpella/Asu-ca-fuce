@@ -5,8 +5,12 @@ export class Player implements PlayerData {
 
     public card: SingleCard | null;
     public lives: Lives;
+    public position: number
 
-    constructor(lives: Lives, card?: SingleCard) {
+    constructor(lives: Lives, position: number, card?: SingleCard) {
+
+        this.position = position
+
         if (card) {
             this.card = new Card(card.suit, card.rank)
         }
@@ -14,18 +18,8 @@ export class Player implements PlayerData {
         this.lives = lives
     }
 
-    public assignCard(card: SingleCard): void {
-        this.card = card
-    }
-
-    public get remainingLives(): number {
-        return this.lives
-    }
-    public get currentCard(): SingleCard | null {
-        return this.card
-    }
-    public swapCard(receivingCard: SingleCard): void {
-        this.card = new Card(receivingCard.suit, receivingCard.rank)
+    public removeCard(receivingCard: SingleCard): void {
+        this.card = receivingCard
     }
     public removeLife(): void {
         this.lives--

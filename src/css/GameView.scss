@@ -1,0 +1,16 @@
+#bg {
+  display: grid;
+  place-items: center;
+  height: 940px;
+  background-color: rgb(140, 140, 182) !important;
+}
+
+.table-view {
+  height: 800px;
+  width: 800px;
+  border-radius: 50%;
+}
+.game-view {
+  height: 800px;
+  position: relative;
+}

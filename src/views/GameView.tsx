@@ -1,25 +1,28 @@
 import React from "react";
 
-import 'css/GameView.css'
+import '../css/GameView.scss'
 
-import table from '../assets/table/Table.png'
+import wood from '../assets/table/Wood.jpg'
 
 
 import { CardDisplay } from "components/CardDisplay";
-import { PlayerData, Suit } from "types";
-import { Player } from "game/player";
 
-const players: PlayerData[] = [new Player(3,),
-]
+import { Game } from "game/game";
+
 
 
 
 const App: React.FC = () => {
+    const game = new Game(6)
+    console.log('Players:', game.players)
+
+    console.log('Deck:', game.deck)
+
     return (
         <div id="bg">
-            <div>
-                <img src={table} alt="table" />
-                <CardDisplay players={players} />
+            <div className="game-view" >
+                <img src={wood} className="table-view" alt="table" />
+                <CardDisplay players={game.players} />
 
             </div>
         </div>
